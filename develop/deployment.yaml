@@ -17,25 +17,13 @@ spec:
       - name: backend-app
         image: 539188695824.dkr.ecr.ap-south-1.amazonaws.com/backend:sha-c0ae4adfeafd60ef271c46fecd6ca76080a92f19   # <-- your pipeline updates this automatically
         ports:
-        - containerPort: 8080             # <-- example port; use any port you like
+        - containerPort: 3000
         env:
         - name: DB_HOST
-          valueFrom:
-            secretKeyRef:
-              name: db-credentials
-              key: DB_HOST
+          value: devsecops-project-db.cn4nwgavkaom.ap-south-1.rds.amazonaws.com
+        - name: DB_PORT
+          value: "5432"
         - name: DB_USER
-          valueFrom:
-            secretKeyRef:
-              name: db-credentials
-              key: DB_USER
+          value: postgres
         - name: DB_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: db-credentials
-              key: DB_PASSWORD
-        - name: DB_NAME
-          valueFrom:
-            secretKeyRef:
-              name: db-credentials
-              key: DB_NAME
+          value: tS<4>tP[Hi~I4<dso32_jWM7uxCN
