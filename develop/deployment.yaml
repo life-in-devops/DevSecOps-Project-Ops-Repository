@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
       - name: backend-app
-        image: 539188695824.dkr.ecr.ap-south-1.amazonaws.com/backend:sha-c0ae4adfeafd60ef271c46fecd6ca76080a92f19   # <-- your pipeline updates this automatically
+        image: 539188695824.dkr.ecr.ap-south-1.amazonaws.com/backend:sha-fc6a9555f89ca876ce77c2c04cbe0620bbda4c91
         ports:
         - containerPort: 8080             # <-- example port; use any port you like
         env:
