@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-app
+  namespace: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend-app
+  template:
+    metadata:
+      labels:
+        app: backend-app
+    spec:
+      containers:
+      - name: backend-app
+        image: 539188695824.dkr.ecr.ap-south-1.amazonaws.com/backend:sha-c0ae4adfeafd60ef271c46fecd6ca76080a92f19   # <-- your pipeline updates this automatically
+        ports:
+        - containerPort: 8080             # <-- example port; use any port you like
+        env:
+        - name: DB_HOST
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: DB_HOST
+        - name: DB_USER
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: DB_USER
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: DB_PASSWORD
+        - name: DB_NAME
+          valueFrom:
+            secretKeyRef:
+              name: db-credentials
+              key: DB_NAME
